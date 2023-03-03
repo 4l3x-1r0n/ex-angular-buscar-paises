@@ -1,0 +1,25 @@
+<h2>Busquedas</h2>
+<hr />
+<ul class="list-group">
+    <!--
+                routerLink es como un anchor(<a>) pero le indicamos la ruta que tenemos definida en nuestro modulo de rutas
+                de esta forma podemos navegar entre rutas sin rcargar la pagina
+
+                routerLinkActive nos permite agregar una clase al elemento html cuando nustra ruta en el navegador conicide
+                con la ruta que proporcionamos con el routerLink
+
+                [routerLinkActiveOptions]="{exact: true}  ------  esto es necesario ponerlo porque como este path es vacio,
+                es decir el routerLink esta vacio, cualquier ruta a la que nos movamos tambien la tomaria como esta ruta, pero
+                al poner este atributo le decimos que tiene que ser esta ruta exacta, como los otros elementos de la lista no
+                estan en blanco no necesitamos este atributo
+            -->
+    <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="list-group-item">
+        Buscar País
+    </li>
+    <li routerLink="region" routerLinkActive="active" class="list-group-item">
+        Por Región
+    </li>
+    <li routerLink="capital" routerLinkActive="active" class="list-group-item">
+        Por Capital
+    </li>
+</ul>

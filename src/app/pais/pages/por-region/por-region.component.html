@@ -1,0 +1,43 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h3>
+        Buscar por región <small> {{ regionActiva | titlecase }}</small>
+    </h3>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <!-- Insertando y eliminando clases en el html de forma condicional -->
+            <!-- [class.btn-primary]="region === regionActiva"   esto pone la clase que pusimos despues del class. al alemento html si la consicion que opnemos da true -->
+
+            <!-- [ngClass] hace lo mismo, pone o quita clases dependiendo de una condicion pero es mas flexible ya que utiliza un objeto con las clases y las clases y las
+        condiciones, fijarse en el codigo mas adelante-->
+
+            <!-- [ngClass]="{
+                'btn-primary': region === regionActiva,
+                'btn-outline-primary': region !== regionActiva
+            }" -->
+
+            <!-- otra forma de hacerlo es poner el class del componente entre [], de esta forma esteremos indicando que lo que este despues del =  y entre "" va a ser
+        una expresion de javascript, entonces podemos usar un operador ternario para hacerlo, fiajrse en el codigo-->
+            <!-- [class]="
+                region === regionActiva
+                    ? 'btn btn-primary'
+                    : 'btn btn-outline-primary'
+            " -->
+
+            <!-- pero en este caso usaremos el [] en el class pero traeremos la sclases de un metodo en nuesto component.ts -->
+            <button
+                *ngFor="let region of regiones"
+                [class]="getClaseCSS(region)"
+                (click)="activarRegion(region)"
+            >
+                {{ region | titlecase }}
+            </button>
+            <hr />
+            <div *ngIf="paises.length" class="row">
+                <div class="col">
+                    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

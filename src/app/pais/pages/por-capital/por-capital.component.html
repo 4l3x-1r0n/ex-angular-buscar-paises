@@ -1,0 +1,28 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h2>Por Capital</h2>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <!-- este cmoponente a continuacion tiene un evento llamado onEnter que fue el que creamos con el @Output
+            por eso es que lo podemos usar ahora, decimos lo que queremos ejecutar y entre () le especificamos lo que
+        recibimos desde el evento y queremos pasar como argumento, en sete caso es $event, que contiene un string con
+    el termono de busqueda, fijarse en el $ -->
+            <app-pais-input
+                (onEnter)="buscar($event)"
+                placeholder="Buscar capital..."
+            ></app-pais-input>
+        </div>
+    </div>
+
+    <hr />
+</div>
+
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontro nada con el termino {{ termino }}
+</div>
+
+<div *ngIf="paises.length" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
